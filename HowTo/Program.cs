@@ -10,6 +10,8 @@ namespace HowTo
     {
         static void Main(string[] args)
         {
+            // 2485109736
+
             // EGN 8406194582 - 1984
             // EGN 7552011038 - 2075
             // EGN 7524169268 - 1875
@@ -32,12 +34,18 @@ namespace HowTo
             }
             else if (months > 20 && months < 33)
             {
-                Console.WriteLine("18" + years);
+                months -= 20;
+                Console.Write("18" + years);
+                Console.WriteLine(".{0}.{1}", months, days);
+                
+                
             }
 
             else if (months > 40 && months < 53)
             {
-                Console.WriteLine("18" + years);
+                Console.WriteLine("20" + years);
+                Console.WriteLine(".{0}.{1}", months, days);
+                months -= 40;
             }
             else
             {
@@ -45,8 +53,39 @@ namespace HowTo
 
             }
 
+            CheckDigitWeight(myEgn);
+
+
+
+
+
+
+
+
 
         }
+
+        private static void CheckDigitWeight(string myEgn)
+        {
+            int[] digits = new int[myEgn.Length];
+            for (int i = 0; i < digits.Length; i++)
+            {
+                digits[i] = myEgn[i]; 
+            }
+
+
+            int currentSum = (digits[0] *2 + digits[1] *4 + digits[2] *8 + digits[3] *5 + digits[4] *10 + digits[5] *9 + digits[6] *7 + digits[7] *3 + digits[8]* 6);
+            Console.WriteLine(currentSum);
+            currentSum = currentSum % 11;
+            if (currentSum == 10)
+            {
+                currentSum = 0;
+            }
+            Console.WriteLine(11 - currentSum);
+        }
+
+
+        
 
         public static bool IsFemale(string genderDigit)
         {
