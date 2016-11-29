@@ -36,6 +36,7 @@ namespace HowTo
             {
                 months -= 20;
 
+
                 Console.Write("18" + years);
                 Console.WriteLine(".{0}.{1}", months, days);
                 
